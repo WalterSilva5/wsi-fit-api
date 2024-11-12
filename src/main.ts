@@ -21,7 +21,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setVersion(process.env.PACKAGE_VERSION || '1.0')
-    .setTitle('Xavier API')
+    .setTitle('CFIT API')
     .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
