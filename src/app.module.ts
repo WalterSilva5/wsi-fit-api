@@ -1,10 +1,8 @@
 import { MiddlewareConsumer, Module, NestModule, ValidationPipe } from '@nestjs/common';
 import { HTTPLoggerMiddleware } from './middleware/logger.middleware';
 import { AllExceptionsFilter } from './exceptions/exception.filter';
-import { GatewayModule } from './modules/gateway/gateway.module';
 import { APP_GUARD, APP_FILTER, APP_PIPE } from '@nestjs/core';
 import { PrismaModule } from './database/prisma/prisma.module';
-import { ApikeyModule } from './modules/apikey/apikey.module';
 import { AppException } from './exceptions/app.exception';
 import { AtGuard } from './modules/auth/guards/at.guard';
 import { UserModule } from './modules/user/user.module';
@@ -40,7 +38,6 @@ import { WorkoutExerciseModule } from './modules/workout-exercise/workout-exerci
     }
   ],
   imports: [
-    GatewayModule,
     BullModule.forRoot({
       redis: {
         host: process.env.REDIS_HOST,
@@ -50,7 +47,6 @@ import { WorkoutExerciseModule } from './modules/workout-exercise/workout-exerci
     UserModule,
     PrismaModule,
     AuthModule,
-    ApikeyModule,
     MetricsModule,
     MuscleGroupModule,
     ExerciseModule,
