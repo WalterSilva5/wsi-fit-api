@@ -1,0 +1,68 @@
+asyncapi: '2.0.0'
+info:
+  title: 'template API'
+  version: '1.0'
+  description: >
+    websocket server for template API.
+    Authorization header is required for connection.
+servers:
+  template-ws:
+    url: 'wss://template.com.br'
+    protocol: 'socket.io'
+    description: >
+      Authorization apikey is required for connection.
+    variables:
+      headers:
+        default: |
+          {
+            "Authorization": "string"
+          }
+
+channels:
+  subSample:
+    description: >
+      - Event listener that receives
+    subscribe:
+      message:
+        summary: 'Recebe texto para síntese de voz'
+        payload:
+          $ref: '#/components/schemas/samplePayload'
+    publish:
+      message:
+        summary: 'response'
+        payload:
+          $ref: '#/components/schemas/responseDto'
+
+components:
+  schemas:
+    samplePayload:
+      type: object
+      properties:
+        text:
+          type: string
+          description: 'sample description'
+          example: 'Olá, mundo!'
+        model:
+          type: string
+          description: 'sample description'
+          example: 'sample'
+        compression:
+          type: boolean
+          description: 'Compressão do áudio'
+          example: false
+      required:
+        - text
+        - model
+        - compression
+
+    responseDto:
+      type: object
+      properties:
+        data:
+          type: string
+          description: 'sample'
+          example: 'ssa='
+        success:
+          type: boolean
+          description: 'Sucesso da requisição'
+          example: true

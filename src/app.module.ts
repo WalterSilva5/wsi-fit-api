@@ -1,16 +1,65 @@
-import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-
-import { LoggerMiddleware } from 'src/middleware/logger.middleware';
+import { MiddlewareConsumer, Module, NestModule, ValidationPipe } from '@nestjs/common';
+import { HTTPLoggerMiddleware } from './middleware/logger.middleware';
+import { AllExceptionsFilter } from './exceptions/exception.filter';
+import { GatewayModule } from './modules/gateway/gateway.module';
+import { APP_GUARD, APP_FILTER, APP_PIPE } from '@nestjs/core';
+import { PrismaModule } from './database/prisma/prisma.module';
+import { ApikeyModule } from './modules/apikey/apikey.module';
+import { AppException } from './exceptions/app.exception';
+import { AtGuard } from './modules/auth/guards/at.guard';
+import { UserModule } from './modules/user/user.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { BullModule } from '@nestjs/bull';
+import { MetricsModule } from './modules/metrics/metrics.module';
+import { MuscleGroupModule } from './modules/muscle-group/muscle-group.module';
+import { ExerciseModule } from './modules/exercise/exercise.module';
+import { WorkoutModule } from './modules/workout/workout.module';
+import { WorkoutExerciseModule } from './modules/workout-exercise/workout-exercise.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: AtGuard
+    },
+    {
+      provide: APP_FILTER,
+      useClass: AllExceptionsFilter
+    },
+    {
+      provide: APP_PIPE,
+      useValue: new ValidationPipe({
+        transform: true,
+        whitelist: true,
+        forbidNonWhitelisted: false,
+        exceptionFactory: (error: any) => {
+          return new AppException(error);
+        }
+      })
+    }
+  ],
+  imports: [
+    GatewayModule,
+    BullModule.forRoot({
+      redis: {
+        host: process.env.REDIS_HOST,
+        port: Number(process.env.REDIS_PORT)
+      }
+    }),
+    UserModule,
+    PrismaModule,
+    AuthModule,
+    ApikeyModule,
+    MetricsModule,
+    MuscleGroupModule,
+    ExerciseModule,
+    WorkoutModule,
+    WorkoutExerciseModule
+  ]
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(LoggerMiddleware).forRoutes('*');
+    consumer.apply(HTTPLoggerMiddleware).forRoutes('*');
   }
 }

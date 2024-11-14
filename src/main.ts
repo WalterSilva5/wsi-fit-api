@@ -2,7 +2,7 @@ import { ClassSerializerInterceptor, Logger } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { NestFactory, Reflector } from '@nestjs/core';
 import { AppModule } from 'src/app.module';
-import { ValidationPipe } from '@nestjs/common';
+import * as express from 'express';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -19,23 +19,17 @@ async function bootstrap() {
     preflightContinue: false
   });
 
+  app.use('/api/swagger/wss', express.static('./dist/src/modules/gateway/doc/output'));
+
   const config = new DocumentBuilder()
     .setVersion(process.env.PACKAGE_VERSION || '1.0')
-    .setTitle('CFIT API')
+    .setTitle('template API')
     .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api/swagger/rest', app, document, {
-    swaggerOptions: {
-      explorer: true,
-      swaggerOptions: {
-        supportedSubmitMethods: ['get', 'post', 'put', 'delete']
-      }
-    }
-  });
-  const PORT =5000;
-  app.useGlobalPipes(new ValidationPipe({ transform: true }));
+  SwaggerModule.setup('api/swagger/rest', app, document);
 
+  const PORT = process.env.PORT || 5000;
   await app.listen(PORT, () => {
     const logger = new Logger('NestApplication');
     logger.log(`Listenning on port ${PORT}`);
