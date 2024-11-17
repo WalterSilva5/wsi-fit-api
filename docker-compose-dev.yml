@@ -1,6 +1,6 @@
 services:
   mysql_cfit_db:
-    container_name: "mysql_cfit_db"
+    container_name: "mysql_cfit_database"
     image: mysql:8.0
     command: --default-authentication-plugin=mysql_native_password
     restart: no
