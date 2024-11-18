@@ -7,23 +7,23 @@ const prismaService = new PrismaService();
 (async () => {
   const users = [
     {
-      firstName: 'template',
+      firstName: 'wsi',
       lastName: 'wsi',
-      email: 'template.admin@wsi.com',
+      email: 'wsi.admin@wsi.com',
       password: await bcrypt.hash('M*7%jfUoDQF7&8cX', 10),
       role: Role.ADMIN
     },
     {
-      firstName: 'template',
+      firstName: 'wsi',
       lastName: 'wsi',
-      email: 'template.user@wsi.com',
+      email: 'wsi.user@wsi.com',
       password: await bcrypt.hash('J4BGwT$o&W*48xY', 10),
       role: Role.USER
     },
     {
-      firstName: 'template',
+      firstName: 'wsi',
       lastName: 'wsi',
-      email: 'template.manager@wsi.com',
+      email: 'wsi.manager@wsi.com',
       password: await bcrypt.hash('J4BT$*&woGW48xY', 10),
       role: Role.MANAGER
     }

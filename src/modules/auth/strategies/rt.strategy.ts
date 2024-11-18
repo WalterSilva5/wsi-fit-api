@@ -1,5 +1,5 @@
 import { AuthService } from 'src/modules/auth/service/auth.service';
-import { User } from 'src/modules/user/entities/user.entity';
+import { User } from 'src/modules/user/dto/user.type';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { Injectable } from '@nestjs/common';

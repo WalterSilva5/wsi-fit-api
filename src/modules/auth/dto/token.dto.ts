@@ -1,5 +1,5 @@
 import { ApiResponseProperty } from '@nestjs/swagger';
-import { User } from 'src/modules/user/entities/user.entity';
+import { User } from 'src/modules/user/dto/user.type';
 
 export class JWTTokenDto {
   @ApiResponseProperty()

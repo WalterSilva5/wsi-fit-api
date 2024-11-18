@@ -9,7 +9,7 @@ import {
 } from '@nestjs/swagger';
 import { AuthenticatedUser } from 'src/decorators/authenticated-user.decorator';
 import { IsPublic } from 'src/decorators/is-public.decorator';
-import { User } from 'src/modules/user/entities/user.entity';
+import { User } from 'src/modules/user/dto/user.type';
 import { AuthService } from '../service/auth.service';
 import { JWTTokenDto } from '../dto/token.dto';
 import { RtGuard } from '../guards/rt.guard';

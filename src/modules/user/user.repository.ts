@@ -1,6 +1,6 @@
 import { PrismaService } from 'src/database/prisma/prisma.service';
 import { RegisterDto } from '../auth/dto/register.dto';
-import { User } from './entities/user.entity';
+import { User } from './dto/user.type';
 import { Injectable } from '@nestjs/common';
 import { DefaultFilter } from 'src/filters/DefaultFilter';
 import { Paginated } from 'src/interfaces/IPaginated';

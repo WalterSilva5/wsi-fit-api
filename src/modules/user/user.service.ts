@@ -2,7 +2,7 @@ import { BadRequestException, Injectable, NotFoundException } from '@nestjs/comm
 import { ISensitiveData } from 'src/interfaces/ISensitiveData';
 import { RegisterDto } from 'src/modules/auth/dto/register.dto';
 import { UserRepository } from './user.repository';
-import { User } from './entities/user.entity';
+import { User } from './dto/user.type';
 import * as bcrypt from 'bcrypt';
 import { Messages } from 'src/enums/messages.enum';
 import { DefaultFilter } from 'src/filters/DefaultFilter';

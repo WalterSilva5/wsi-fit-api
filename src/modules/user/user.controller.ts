@@ -3,7 +3,7 @@ import { AuthenticatedUser } from 'src/decorators/authenticated-user.decorator';
 import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { DefaultFilter } from 'src/filters/DefaultFilter';
 import { Roles } from 'src/decorators/role.decorator';
-import { User } from './entities/user.entity';
+import { User } from './dto/user.type';
 import { UserService } from './user.service';
 import { Role } from 'src/enums/role.enum';
 import { UserDto } from './dto/user.dto';
