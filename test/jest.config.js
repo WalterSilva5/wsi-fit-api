@@ -21,5 +21,10 @@ module.exports = {
     "^src/(.*)$": "<rootDir>/src/$1"
   },
   coverageDirectory: "../coverage",
-  testEnvironment: "node"
+  testEnvironment: "node",
+  testPathIgnorePatterns: [
+    "node_modules",
+    "<rootDir>/dist",
+    "<rootDir>/cli"
+  ],
 };
