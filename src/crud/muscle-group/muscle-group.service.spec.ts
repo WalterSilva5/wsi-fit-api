@@ -1,15 +1,18 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { MuscleGroupService } from './muscle-group.service';
 import { MuscleGroupRepository } from './muscle-group.repository';
+import { PrismaModule } from '../../database/prisma/prisma.module';
 
-describe('MuscleGroupRepository', () => {
-  let service: MuscleGroupRepository;
+describe('MuscleGroupService', () => {
+  let service: MuscleGroupService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [MuscleGroupRepository],
+      providers: [MuscleGroupService, MuscleGroupRepository],
+      imports: [PrismaModule],
     }).compile();
 
-    service = module.get<MuscleGroupRepository>(MuscleGroupRepository);
+    service = module.get<MuscleGroupService>(MuscleGroupService);
   });
 
   it('should be defined', () => {
