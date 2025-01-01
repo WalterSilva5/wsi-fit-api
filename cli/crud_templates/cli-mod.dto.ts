@@ -5,7 +5,8 @@ import { ApiResponseProperty } from '@nestjs/swagger';
 export class CliModDTO {
   @ApiResponseProperty()
   id?: number;
-
+ 
+  //TODO: ADD REQUIRED FIELDS
   @ApiResponseProperty()
   createdAt?: Date;
 
