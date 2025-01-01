@@ -8,8 +8,8 @@ import { AuthenticatedUser } from 'src/crud/auth/decorators/authenticated-user.d
 @Controller('muscle-group')
 @ApiTags('muscle-group')
 export class MuscleGroupController extends CrudController<MuscleGroupDTO> {
-  constructor(private readonly muscleGroupService: MuscleGroupService) {
-    super(muscleGroupService);
+  constructor(protected readonly service: MuscleGroupService) {
+    super(service);
   }
 
   @Post()
@@ -18,6 +18,6 @@ export class MuscleGroupController extends CrudController<MuscleGroupDTO> {
     @AuthenticatedUser() user: any,
     @Body() dto: MuscleGroupDTO,
   ): Promise<MuscleGroupDTO> {
-    return this.muscleGroupService.create(dto, user);
+    return this.service.create(dto, user);
   }
 }

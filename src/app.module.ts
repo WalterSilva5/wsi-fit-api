@@ -14,6 +14,7 @@ import { UserModule } from './crud/user/user.module';
 import { AuthModule } from './crud/auth/auth.module';
 import { AppController } from './app.controller';
 import { MuscleGroupModule } from './crud/muscle-group/muscle-group.module';
+import { ExerciseModule } from './crud/exercise/exercise.module';
 
 @Module({
   providers: [
@@ -48,7 +49,13 @@ import { MuscleGroupModule } from './crud/muscle-group/muscle-group.module';
       }),
     },
   ],
-  imports: [UserModule, PrismaModule, AuthModule, MuscleGroupModule],
+  imports: [
+    UserModule,
+    PrismaModule,
+    AuthModule,
+    MuscleGroupModule,
+    ExerciseModule,
+  ],
   controllers: [AppController],
 })
 export class AppModule implements NestModule {
