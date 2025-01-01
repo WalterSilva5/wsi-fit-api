@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { IsPublic } from './cruds/auth/decorators/is-public.decorator';
+import { IsPublic } from './crud/auth/decorators/is-public.decorator';
 
 @Controller('')
 @ApiTags('app')

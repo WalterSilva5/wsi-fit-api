@@ -9,10 +9,10 @@ import {
   Delete,
   Post,
 } from '@nestjs/common';
-import { AuthenticatedUser } from 'src/cruds/auth/decorators/authenticated-user.decorator';
+import { AuthenticatedUser } from 'src/crud/auth/decorators/authenticated-user.decorator';
 import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { PaginationFilter } from 'src/filters/pagination.filter';
-import { Roles } from 'src/cruds/auth/decorators/role.decorator';
+import { Roles } from 'src/crud/auth/decorators/role.decorator';
 import { User } from './dto/user.type';
 import { UserService } from './user.service';
 import { Role } from '@prisma/client';

@@ -9,10 +9,11 @@ import { AllExceptionsFilter } from './exceptions/exception.filter';
 import { APP_GUARD, APP_FILTER, APP_PIPE } from '@nestjs/core';
 import { PrismaModule } from './database/prisma/prisma.module';
 import { AppException } from './exceptions/app.exception';
-import { AtGuard } from './cruds/auth/guards/at.guard';
-import { UserModule } from './cruds/user/user.module';
-import { AuthModule } from './cruds/auth/auth.module';
+import { AtGuard } from './crud/auth/guards/at.guard';
+import { UserModule } from './crud/user/user.module';
+import { AuthModule } from './crud/auth/auth.module';
 import { AppController } from './app.controller';
+import { MuscleGroupModule } from './crud/muscle-group/muscle-group.module';
 
 @Module({
   providers: [
@@ -47,7 +48,7 @@ import { AppController } from './app.controller';
       }),
     },
   ],
-  imports: [UserModule, PrismaModule, AuthModule],
+  imports: [UserModule, PrismaModule, AuthModule, MuscleGroupModule],
   controllers: [AppController],
 })
 export class AppModule implements NestModule {

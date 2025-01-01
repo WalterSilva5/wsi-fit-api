@@ -4,7 +4,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { ISensitiveData } from 'src/interfaces/sensitive-date.interface';
-import { RegisterDto } from 'src/cruds/auth/dto/register.dto';
+import { RegisterDto } from 'src/crud/auth/dto/register.dto';
 import { UserRepository } from './user.repository';
 import { User } from './dto/user.type';
 import * as bcrypt from 'bcrypt';

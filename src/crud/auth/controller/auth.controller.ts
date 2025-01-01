@@ -14,17 +14,17 @@ import {
   ApiBody,
   ApiTags,
 } from '@nestjs/swagger';
-import { AuthenticatedUser } from 'src/cruds/auth/decorators/authenticated-user.decorator';
-import { IsPublic } from 'src/cruds/auth/decorators/is-public.decorator';
-import { User } from 'src/cruds/user/dto/user.type';
+import { AuthenticatedUser } from 'src/crud/auth/decorators/authenticated-user.decorator';
+import { IsPublic } from 'src/crud/auth/decorators/is-public.decorator';
+import { User } from 'src/crud/user/dto/user.type';
 import { AuthService } from '../service/auth.service';
 import { JWTTokenDto } from '../dto/token.dto';
 import { RtGuard } from '../guards/rt.guard';
 import { AtGuard } from '../guards/at.guard';
 import { LoginDto } from '../dto/login.dto';
 import { Request } from '@nestjs/common';
-import { GoogleOAuthGuard } from 'src/cruds/auth/guards/google-oauth.guard';
-import { OauthService } from 'src/cruds/auth/service/oauth.service';
+import { GoogleOAuthGuard } from 'src/crud/auth/guards/google-oauth.guard';
+import { OauthService } from 'src/crud/auth/service/oauth.service';
 import { ApiResponse } from '@nestjs/swagger';
 import { Response } from 'express';
 import { LocalAuthGuard } from '../guards/local-auth.guard';

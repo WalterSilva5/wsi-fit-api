@@ -6,10 +6,10 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Reflector } from '@nestjs/core';
-import { IS_PUBLIC_KEY } from 'src/cruds/auth/decorators/is-public.decorator';
-import { ROLES_KEY } from 'src/cruds/auth/decorators/role.decorator';
-import { AuthRequestDTO } from 'src/cruds/auth/dto/auth-request.dto';
-import { UserActivityRegistry } from 'src/cruds/user/user.registry';
+import { IS_PUBLIC_KEY } from 'src/crud/auth/decorators/is-public.decorator';
+import { ROLES_KEY } from 'src/crud/auth/decorators/role.decorator';
+import { AuthRequestDTO } from 'src/crud/auth/dto/auth-request.dto';
+import { UserActivityRegistry } from 'src/crud/user/user.registry';
 @Injectable()
 export class AtGuard extends AuthGuard('jwt') {
   _logger = new Logger(AtGuard.name);
