@@ -16,6 +16,7 @@ import { AppController } from './app.controller';
 import { MuscleGroupModule } from './crud/muscle-group/muscle-group.module';
 import { ExerciseModule } from './crud/exercise/exercise.module';
 import { WorkoutModule } from './crud/workout/workout.module';
+import { WorkoutExerciseModule } from './crud/workout-exercise/workout-exercise.module';
 
 @Module({
   providers: [
@@ -57,6 +58,7 @@ import { WorkoutModule } from './crud/workout/workout.module';
     MuscleGroupModule,
     ExerciseModule,
     WorkoutModule,
+    WorkoutExerciseModule,
   ],
   controllers: [AppController],
 })
