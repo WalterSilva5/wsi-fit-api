@@ -25,6 +25,13 @@ import { RegisterDto } from '../auth/dto/register.dto';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @Post()
+  @Roles(Role.ADMIN)
+  @ApiOkResponse({ type: UserDto })
+  protected async create(@Body() dto: RegisterDto): Promise<User> {
+    return this.userService.create(dto);
+  }
+
   @Get('me')
   @ApiBearerAuth()
   @ApiOkResponse({ type: UserDto })
@@ -66,12 +73,5 @@ export class UserController {
   @Roles(Role.ADMIN)
   protected async delete(@Param('id', ParseIntPipe) id: number): Promise<void> {
     return this.userService.delete(id);
-  }
-
-  @Post()
-  @Roles(Role.ADMIN)
-  @ApiOkResponse({ type: UserDto })
-  protected async create(@Body() dto: RegisterDto): Promise<User> {
-    return this.userService.create(dto);
   }
 }
