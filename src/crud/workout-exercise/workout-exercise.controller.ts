@@ -19,19 +19,19 @@ export class WorkoutExerciseController {
     return this.service.create(dto);
   }
 
-  @Delete('delete')
+  @Delete('')
   @ApiOkResponse()
   async delete(@Body() dto: WorkoutExerciseDTO): Promise<void> {
     return this.service.delete(dto.id);
   }
 
-  @Delete('delete-all')
+  @Delete('delete-all-by-workout')
   @ApiOkResponse()
   async deleteAllByWorkoutId(@Body() dto: WorkoutExerciseDTO): Promise<void> {
     return this.service.deleteAllByWorkoutId(dto.workoutId);
   }
 
-  @Get('get-by-workout-id')
+  @Get('get-by-workout')
   @ApiOkResponse({ type: [WorkoutExerciseDTO] })
   async getByWorkoutId(
     @Query('workoutId') workoutId: number,
