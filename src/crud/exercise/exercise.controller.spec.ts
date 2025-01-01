@@ -1,20 +1,20 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { MuscleGroupController } from './exercise.controller';
-import { MuscleGroupRepository } from './exercise.repository';
-import { MuscleGroupService } from './exercise.service';
+import { ExerciseController } from './exercise.controller';
+import { ExerciseRepository } from './exercise.repository';
+import { ExerciseService } from './exercise.service';
 import { PrismaModule } from 'src/database/prisma/prisma.module';
 
-describe('MuscleGroupController', () => {
-  let controller: MuscleGroupController;
+describe('ExerciseController', () => {
+  let controller: ExerciseController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [MuscleGroupController],
-      providers: [MuscleGroupService, MuscleGroupRepository],
+      controllers: [ExerciseController],
+      providers: [ExerciseService, ExerciseRepository],
       imports: [PrismaModule],
     }).compile();
 
-    controller = module.get<MuscleGroupController>(MuscleGroupController);
+    controller = module.get<ExerciseController>(ExerciseController);
   });
 
   it('should be defined', () => {
