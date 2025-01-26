@@ -1,5 +1,5 @@
 import { PrismaService } from '../src/database/prisma/prisma.service';
-import { users } from './user-seed.config';
+import { users } from './user-seed.fixture';
 
 const prismaService = new PrismaService();
 
