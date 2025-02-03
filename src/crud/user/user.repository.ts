@@ -83,12 +83,9 @@ export class UserRepository {
   }
 
   public async delete(id: number): Promise<void> {
-    await this.prisma.user.update({
+    await this.prisma.user.delete({
       where: {
         id,
-      },
-      data: {
-        deletedAt: new Date(),
       },
     });
   }
