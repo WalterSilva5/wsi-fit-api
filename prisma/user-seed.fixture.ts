@@ -23,5 +23,12 @@ export const users = (async () => {
       password: await bcrypt.hash('WJ4B@T$ghsg24TRY', 10),
       role: Role.MANAGER,
     },
+    {
+      firstName: 'wsiadmin',
+      lastName: 'wsiadmin',
+      email: 'admin@admin.com',
+      password: await bcrypt.hash('Admin@123', 10),
+      role: Role.ADMIN,
+    }
   ];
 })();
